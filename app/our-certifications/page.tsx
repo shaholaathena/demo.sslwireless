@@ -104,12 +104,7 @@ export default function OurCertifications() {
                                 <div className="text-xs font-bold tracking-[0.2em] text-[#2D499A] uppercase mb-6">{cert.category}</div>
                                 <h3 className="text-3xl font-normal text-gray-900 mb-6 font-serif italic">{cert.title}</h3>
                                 <p className="text-gray-600 leading-relaxed text-lg mb-8">{cert.description}</p>
-                                <div className="flex items-center text-[#2D499A] font-semibold group-hover:gap-2 transition-all cursor-pointer">
-                                    <span>Learn More</span>
-                                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </div>
+                               
                             </motion.div>
                         ))}
                     </div>
