@@ -9,28 +9,82 @@ import Image from 'next/image'
 
 const milestones = [
     {
-        year: '2023',
-        title: 'Global Expansion',
-        description: 'Expanded operations to international markets, setting up offices in 3 new countries.',
+        year: '2022',
+        title: 'Appraised at CMMI Level 3',
+        description: 'Achieved Level 3 of the CMMI Institute’s Capability Maturity Model Integration for Development (CMMI-DEV v1.3). This certifies SSL Wireless follows detailed process areas in product and service development, quality assurance, and project management.',
         image: '/images/milestone-2023.jpg'
     },
     {
-        year: '2020',
-        title: 'Innovation Award',
-        description: 'Received the National ICT Award for our breakthrough payment solution.',
-        image: '/images/milestone-2020.jpg'
+        year: '2018',
+        title: 'Global Approval: ISO 27001',
+        description: 'Achieved ISO 27001 certification, the international standard for information security, ensuring the highest level of data protection and privacy for our clients.',
+        image: '/images/office-hero.jpg'
     },
     {
         year: '2018',
-        title: 'Reaching 1 Million Users',
-        description: 'Our flagship product crossed the 1 million active users mark.',
-        image: '/images/milestone-2018.jpg'
+        title: 'Getting Future Ready: IoT',
+        description: 'Started building an Internet of Things (IoT) lab, growing capabilities in AI and Machine Learning. Rebranded the card-on-file platform as Easy Checkout and received awards from Mastercard.',
+        image: '/images/milestone-2020.jpg'
+    },
+    {
+        year: '2017',
+        title: 'Digital Marketing & Global Expansion',
+        description: 'Launched a 360-degree digital marketing wing and deployed the "FastPay" mobile wallet in Kurdistan, Iraq, marking our first international fintech export.',
+        image: '/images/news-1.jpg'
+    },
+    {
+        year: '2016',
+        title: 'PSO License from Central Bank',
+        description: 'Received the Payment Systems Operator (PSO) license from Bangladesh Bank and launched the first-ever online bill collection app for utility billers.',
+        image: '/images/sslcommerz.png'
     },
     {
         year: '2015',
-        title: 'Company Inception',
-        description: 'Started our journey with a small team of 5 visionaries in a small garage.',
+        title: 'Strategic Partnership with VISA',
+        description: 'Signed a partnership with VISA to promote e-commerce in Bangladesh, offering innovative payment solutions and growing the SSLCOMMERZ ecosystem.',
+        image: '/images/milestone-2018.jpg'
+    },
+    {
+        year: '2014',
+        title: 'Helping Businesses Grow Online',
+        description: 'Became the largest acquirer of merchants and payment channels through SSLCOMMERZ, launching specialized subscription services and embedded VAS apps.',
+        image: '/images/event-2.jpg'
+    },
+    {
+        year: '2013',
+        title: 'E-Ticketing & Field Automation',
+        description: 'Launched BPL E-Ticketing and partnered with FieldEz for field force tracking. Started connecting banks to our Virtual Recharge platform via APIs.',
+        image: '/images/news-2.jpg'
+    },
+    {
+        year: '2011',
+        title: 'Virtual Recharge Evolution',
+        description: 'Brought the first virtual recharge platform for banks and launched easy.com.bd, the premier online recharge platform in Bangladesh.',
         image: '/images/milestone-2015.jpg'
+    },
+    {
+        year: '2010',
+        title: 'Revolutionizing Payment Gateways',
+        description: 'Launched SSLCOMMERZ, the first online payment gateway in Bangladesh, along with airtime recharge services for mobile operators.',
+        image: '/images/event-1.jpg'
+    },
+    {
+        year: '2008',
+        title: 'Pioneering Mobile Banking',
+        description: 'Launched the first news-on-demand portal, SMS Insurance, and the very first mobile banking application in Bangladesh.',
+        image: '/images/news-3.jpg'
+    },
+    {
+        year: '2007',
+        title: 'The Revamp to SSL Wireless',
+        description: 'Software Shop Limited revamped as SSL Wireless, shifting focus to domestic software development, telecommunication VAS, and fintech services.',
+        image: '/images/office-hero.png'
+    },
+    {
+        year: '1999',
+        title: 'A Dream Becomes Reality',
+        description: 'Software Shop Limited started its journey as an associated company of Concorde Garments, beginning as a franchisee of Aptech IT education.',
+        image: '/images/company-hero-new.jpg'
     }
 ]
 
@@ -43,7 +97,7 @@ export default function OurMilestones() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-gray-50 overflow-hidden">
+            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[#2D499A] text-white overflow-hidden">
                 <div className="container mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -51,12 +105,12 @@ export default function OurMilestones() {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl mx-auto text-center"
                     >
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 mb-8">
-                            Our Journey of <br />
-                            <span className="font-serif italic text-blue-600">Growth & Impact</span>
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal mb-8">
+                            Our <span className="font-serif italic text-blue-200">Milestones</span>
                         </h1>
-                        <p className="text-xl text-gray-600">
-                            Walking through the years that defined who we are today.
+                        <h2 className="text-3xl md:text-4xl font-normal mb-6">Hi, we’re SSL Wireless</h2>
+                        <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+                            An innovative collective of like-minded folks making useful and enduring technology products.
                         </p>
                     </motion.div>
                 </div>

@@ -10,38 +10,73 @@ import Image from 'next/image'
 const newsItems = [
     {
         id: 1,
-        type: 'News',
-        date: 'Feb 01, 2026',
-        title: 'SSL Wireless Wins Top Innovator Award',
+        type: 'Newsletter',
+        date: 'Oct 25, 2025',
+        title: 'October 25 Newsletter',
         image: '/images/news-1.jpg'
     },
     {
         id: 2,
-        type: 'Event',
-        date: 'Mar 15, 2026',
-        title: 'Join us at the Digital Summit 2026',
-        image: '/images/event-1.jpg'
-    },
-    {
-        id: 3,
-        type: 'News',
-        date: 'Jan 20, 2026',
-        title: 'Partnering with Leading Banks for Secure Micro-payments',
+        type: 'Newsletter',
+        date: 'Sep 25, 2025',
+        title: 'September 25 Newsletter',
         image: '/images/news-2.jpg'
     },
     {
+        id: 3,
+        type: 'Award',
+        date: '2017',
+        title: 'eTunes won Respected South Asian Manthan Award 2016-2017',
+        image: '/images/event-1.jpg'
+    },
+    {
         id: 4,
-        type: 'News',
-        date: 'Jan 05, 2026',
-        title: 'Launching our new ESG Initiative',
+        type: 'Certification',
+        date: '2016',
+        title: 'Achieved PCI DSS Certification for its payment gateway- SSLCOMMERZ',
         image: '/images/news-3.jpg'
     },
     {
         id: 5,
-        type: 'Event',
-        date: 'Apr 10, 2026',
-        title: 'Hackathon 2026: Code for Future',
+        type: 'Agreement',
+        date: '2015',
+        title: 'Agreement between BASIS and SSL Wireless for accepting online payments',
         image: '/images/event-2.jpg'
+    },
+    {
+        id: 6,
+        type: 'Certification',
+        date: '2018',
+        title: 'Awarded ISO 27001 Certification for Information Security Management',
+        image: '/images/milestone-2018.jpg'
+    },
+    {
+        id: 7,
+        type: 'Award',
+        date: '2019',
+        title: "SSLCOMMERZ gets 'Excellence in MasterCard Online Acquiring Business' award",
+        image: '/images/milestone-2020.jpg'
+    },
+    {
+        id: 8,
+        type: 'Innovation',
+        date: '2020',
+        title: 'SSLCOMMERZ stepped in to revolutionize and transform the digital payment ecosystem through Bangla QR',
+        image: '/images/sslcommerz.png'
+    },
+    {
+        id: 9,
+        type: 'Award',
+        date: '2020',
+        title: 'SSL Wireless receives Excellence in Fintech Partnership 2019-2020 award from Visa',
+        image: '/images/milestone-2015.jpg'
+    },
+    {
+        id: 10,
+        type: 'Award',
+        date: '2020',
+        title: 'SSL Wireless has received e-Commerce Movers Award (eCMA) 2020',
+        image: '/images/milestone-2023.jpg'
     }
 ]
 
@@ -49,39 +84,70 @@ export default function NewsAndEvents() {
     useSmoothScroll()
     const [filter, setFilter] = useState('All')
 
-    const filteredItems = filter === 'All' ? newsItems : newsItems.filter(item => item.type === filter)
+    const filteredItems = filter === 'All' ? newsItems : newsItems.filter(item => item.type === filter || (filter === 'News' && item.type !== 'Event'))
+
+    const categories = ['All', 'Newsletter', 'Award', 'Certification', 'Innovation']
 
     return (
         <main className="min-h-screen bg-white">
             <Header />
 
-            {/* Hero */}
-            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
-                <div className="container mx-auto px-6 text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-normal text-gray-900 mb-8"
+            {/* Hero Section */}
+            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[#2D499A] text-white overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-12 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="lg:w-3/5"
                     >
-                        News & <span className="font-serif italic text-blue-600">Events</span>
-                    </motion.h1>
-                    <p className="text-xl text-gray-600">Stay updated with everything happening at SSL Wireless.</p>
+                        <span className="text-blue-200 uppercase tracking-[0.2em] font-bold mb-6 block">News and Events</span>
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-normal leading-tight mb-8">
+                            News Updates & <br />
+                            <span className="font-serif italic text-blue-200">Event Highlights.</span>
+                        </h1>
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="lg:w-2/5"
+                    >
+                        <p className="text-xl md:text-2xl text-blue-100 leading-relaxed font-light border-l border-blue-400 pl-8">
+                            Stay updated with the latest news and event highlights. From breaking news to upcoming events, we bring you the most important updates and happenings.
+                        </p>
+                    </motion.div>
+                </div>
+                {/* Abstract Background Design */}
+                <div className="absolute inset-0 z-0 opacity-10">
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white to-transparent" />
+                    <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-400 rounded-full blur-[100px]" />
                 </div>
             </section>
 
-            {/* Filter & Grid */}
-            <section className="py-20 bg-gray-50 min-h-screen">
-                <div className="container mx-auto px-6">
+            {/* Content Section */}
+            <section className="py-24 bg-gray-50 min-h-screen relative overflow-hidden">
+                {/* Background graphic for consistency */}
+                <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+                    <Image
+                        src="/images/mission-vision-bg-v2.png"
+                        alt="Background"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10">
                     {/* Filter Tabs */}
-                    <div className="flex justify-center mb-16">
-                        <div className="inline-flex bg-white p-1 rounded-full shadow-sm border border-gray-100">
-                            {['All', 'News', 'Event'].map((tab) => (
+                    <div className="flex justify-center mb-20">
+                        <div className="inline-flex bg-white p-2 rounded-3xl shadow-xl border border-white/50 backdrop-blur-md">
+                            {categories.map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setFilter(tab)}
-                                    className={`px-8 py-3 rounded-full text-sm font-medium transition-all ${filter === tab
-                                        ? 'bg-blue-600 text-white shadow-md'
-                                        : 'text-gray-500 hover:text-gray-900'
+                                    className={`px-8 py-3 rounded-2xl text-sm font-bold tracking-wider transition-all duration-500 uppercase ${filter === tab
+                                        ? 'bg-[#2D499A] text-white shadow-lg'
+                                        : 'text-gray-400 hover:text-[#2D499A] hover:bg-blue-50'
                                         }`}
                                 >
                                     {tab}
@@ -91,33 +157,43 @@ export default function NewsAndEvents() {
                     </div>
 
                     {/* Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredItems.map((item) => (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {filteredItems.map((item, index) => (
                             <motion.div
                                 key={item.id}
                                 layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 group cursor-pointer"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.05 }}
+                                className="bg-white/80 backdrop-blur-xl rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white/50 group cursor-pointer flex flex-col h-full"
                             >
-                                <div className="h-48 bg-gray-200 relative overflow-hidden">
+                                <div className="aspect-[4/3] relative overflow-hidden">
                                     <Image
                                         src={item.image}
                                         alt={item.title}
                                         fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                        className="object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-transparent" />
-                                    <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white relative z-10 ${item.type === 'Event' ? 'bg-orange-500' : 'bg-blue-500'}`}>
-                                        {item.type}
-                                    </span>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#2D499A]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <div className="absolute top-6 left-6">
+                                        <span className="px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl text-[10px] font-bold uppercase tracking-[0.2em] text-[#2D499A] shadow-lg border border-white/50">
+                                            {item.type}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="p-8">
-                                    <div className="text-sm text-gray-400 mb-4 font-medium">{item.date}</div>
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                <div className="p-10 flex flex-col flex-grow">
+                                    <div className="flex items-center gap-3 text-sm text-[#2D499A] mb-4 font-bold tracking-widest uppercase opacity-60">
+                                        <span>{item.date}</span>
+                                    </div>
+                                    <h3 className="text-2xl font-normal text-gray-900 leading-tight group-hover:text-[#2D499A] transition-colors duration-300 font-serif italic mb-6">
                                         {item.title}
                                     </h3>
+                                    <div className="mt-auto flex items-center gap-2 text-[#2D499A] font-bold text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
+                                        <span>Read Story</span>
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}

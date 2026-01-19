@@ -4,33 +4,59 @@ import { useSmoothScroll } from '@/hooks/useSmoothScroll'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import Image from 'next/image'
+import Icon from '@/components/Icon'
 
-const articles = [
+const researchAreas = [
     {
-        id: 1,
-        category: 'Research',
-        date: 'Jan 15, 2026',
-        title: 'The Future of AI in Fintech',
-        excerpt: 'Exploring how artificial intelligence is reshaping the financial technology landscape.',
-        image: '/images/news-1.jpg'
+        icon: 'iot',
+        title: 'Internet of Things',
+        description: 'Enabling things around you to send/receive information over the internet.'
     },
     {
-        id: 2,
-        category: 'Innovation',
-        date: 'Dec 10, 2025',
-        title: 'Blockchain for Supply Chain',
-        excerpt: 'A deep dive into how blockchain can bring transparency to supply chains globally.',
-        image: '/images/news-2.jpg'
+        icon: 'ai',
+        title: 'Artificial Intelligence',
+        description: 'Absorb, interpret, make complex decisions, and perform human-like tasks.'
     },
     {
-        id: 3,
-        category: 'Whitepaper',
-        date: 'Nov 05, 2025',
-        title: '5G and IoT Connectivity',
-        excerpt: 'Understanding the impact of ultra-fast networks on IoT device proliferation.',
-        image: '/images/news-3.jpg'
+        icon: 'ml',
+        title: 'Machine Learning',
+        description: 'Enabling machines to analyze, recognize, & learn, then apply to predict & improve.'
+    },
+    {
+        icon: 'data_science',
+        title: 'Data Science',
+        description: 'Helping businesses to make decisions based on facts, statistical numbers, and trends.'
+    }
+]
+
+const projectSteps = [
+    {
+        title: 'Innovative Research and Development',
+        description: 'Our research consists of technical development activities undertaken in developing new services or products constituting the first stage of development of a potential new product/service. We first build a Proof of Concept (POC) to demonstrate the feasibility of a concept/idea and verify that it has practical potential.',
+        image: '/images/research-hero.jpg',
+        badge: 'Step 1: POC'
+    },
+    {
+        title: 'Building and Refining for Success',
+        description: 'Then in the second stage, we go for the Minimum Viable Product (MVP), where we build a version of the product/service with just enough features to satisfy early customers and collect feedback for future product development. Based on MVP’s success, we release commercial versions.',
+        image: '/images/event-2.jpg',
+        badge: 'Step 2: MVP'
+    }
+]
+
+const productHighlights = [
+    {
+        title: 'Voice Bot',
+        description: 'A Bangla speech recognition bot where users can give commands in Bangla and the computer can recognize the commands and execute the actions.',
+        image: '/images/news-2.jpg',
+        icon: 'voice'
+    },
+    {
+        title: 'i-Receptionist',
+        description: 'A smart and secure way to manage your visitors. It has system-integrated facial recognition, a visitor approval system, historical data for records, and compliance.',
+        image: '/images/news-1.jpg',
+        icon: 'user_scan'
     }
 ]
 
@@ -41,88 +67,164 @@ export default function Research() {
         <main className="min-h-screen bg-white">
             <Header />
 
-            {/* Hero */}
-            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-gray-50 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10 text-center">
+            {/* Hero Section */}
+            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[#2D499A] text-white overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row gap-12 items-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold tracking-wide mb-6 uppercase"
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="lg:w-3/5"
                     >
-                        R&D Lab
+                        <span className="text-blue-200 uppercase tracking-[0.2em] font-bold mb-6 block">Research</span>
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-normal leading-tight mb-8">
+                            Living in the age of the <br />
+                            <span className="font-serif italic text-blue-200">Fourth Industrial Revolution (IR 4.0)</span>
+                        </h1>
                     </motion.div>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-normal text-gray-900 mb-8"
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="lg:w-2/5"
                     >
-                        Innovating for <br /> <span className="font-serif italic text-blue-600">Tomorrow</span>
-                    </motion.h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Our R&D division focuses on exploring emerging technologies to create the solutions of the future.
-                    </p>
+                        <p className="text-xl md:text-2xl text-blue-100 leading-relaxed font-light border-l border-blue-400 pl-8">
+                            We are building capabilities and skillsets to become future-ready. We aspire to develop cutting-edge solutions to solve existing problems.
+                        </p>
+                    </motion.div>
+                </div>
+                {/* Abstract Background Design */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/10 to-transparent opacity-20" />
+                    <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-400 rounded-full blur-[100px] opacity-10" />
                 </div>
             </section>
 
-            {/* Featured Research (Large Card) */}
-            <section className="py-20">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="relative rounded-3xl overflow-hidden bg-gray-900 h-[500px] flex items-end p-8 md:p-16"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
-                        {/* Placeholder for featured image */}
-                        <div className="absolute inset-0 bg-[url('/images/research-hero.jpg')] bg-cover bg-center opacity-70" />
-
-                        <div className="relative z-20 max-w-2xl">
-                            <span className="text-blue-400 font-bold tracking-wider uppercase mb-4 block">Featured Study</span>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Autonomous Systems in Urban Environments</h2>
-                            <p className="text-gray-300 text-lg mb-8 line-clamp-3">
-                                How our latest pilot program is aiming to reduce traffic congestion using decentralized AI agents interacting with smart city infrastructure.
-                            </p>
-                            <button className="px-8 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition-colors">
-                                Read Full Paper
-                            </button>
-                        </div>
-                    </motion.div>
+            {/* Core Research Section */}
+            <section className="relative py-32 text-gray-900 overflow-hidden">
+                {/* Background graphic for consistency with Our Company */}
+                <div className="absolute inset-0 z-0 opacity-40">
+                    <Image
+                        src="/images/mission-vision-bg-v2.png"
+                        alt="Background"
+                        fill
+                        className="object-cover"
+                    />
                 </div>
-            </section>
 
-            {/* Recent Insights */}
-            <section className="py-20 bg-white">
-                <div className="container mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-12">Latest Insights</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {articles.map((article, i) => (
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="max-w-4xl mb-20">
+                        <h2 className="text-4xl md:text-6xl font-normal font-serif italic text-gray-900 mb-8">Research Focus</h2>
+                        <p className="text-xl text-gray-700 leading-relaxed font-medium">
+                            Research, by its essence, embodies the overall process leading to innovation. We are investing in technology and future capabilities, which can transform into new products, processes, and services.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {researchAreas.map((area, index) => (
                             <motion.div
-                                key={article.id}
+                                key={index}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="group cursor-pointer"
+                                transition={{ delay: index * 0.1 }}
+                                className="bg-white/10 backdrop-blur-xl border border-white/20 p-10 rounded-[2.5rem] hover:bg-white/20 transition-all duration-500 group shadow-lg hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden"
                             >
-                                <div className="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden mb-6 relative">
-                                    <Image
-                                        src={article.image}
-                                        alt={article.title}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/10 transition-colors duration-500" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="mb-8 p-5 bg-white/20 backdrop-blur-md rounded-2xl inline-block group-hover:scale-110 group-hover:bg-white/40 transition-all duration-500 text-[#2D499A] border border-white/30 shadow-sm">
+                                    <Icon name={area.icon} className="w-8 h-8" />
                                 </div>
-                                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                                    <span className="text-blue-600 font-semibold">{article.category}</span>
-                                    <span>•</span>
-                                    <span>{article.date}</span>
+                                <h3 className="text-2xl font-normal text-gray-900 mb-4 relative z-10 font-serif italic">{area.title}</h3>
+                                <p className="text-gray-600 leading-relaxed relative z-10 font-medium">{area.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Prototyping Steps */}
+            <section className="py-32 bg-gray-50">
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-24">
+                        <h2 className="text-4xl md:text-6xl font-normal font-serif italic text-gray-900 mb-4">Prototyping & Projects</h2>
+                        <div className="w-24 h-1 bg-[#2D499A] mx-auto opacity-20" />
+                    </div>
+
+                    <div className="space-y-32">
+                        {projectSteps.map((step, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className={`flex flex-col lg:flex-row items-center gap-20 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                            >
+                                <div className="lg:w-1/2">
+                                    <div className="relative aspect-[16/10] rounded-[3rem] overflow-hidden shadow-2xl group">
+                                        <Image
+                                            src={step.image}
+                                            alt={step.title}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                                        />
+                                        <div className="absolute inset-0 bg-[#2D499A]/10 group-hover:bg-transparent transition-colors duration-500" />
+                                    </div>
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                                    {article.title}
-                                </h3>
-                                <p className="text-gray-600 leading-relaxed line-clamp-2">{article.excerpt}</p>
+                                <div className="lg:w-1/2">
+                                    <span className="text-[#2D499A] font-bold tracking-[0.3em] uppercase text-xs mb-6 block">{step.badge}</span>
+                                    <h3 className="text-3xl md:text-5xl font-normal text-gray-900 mb-8 leading-tight font-serif italic">{step.title}</h3>
+                                    <p className="text-xl text-gray-600 leading-relaxed mb-8 font-light">{step.description}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Product Highlights */}
+            <section className="py-32 bg-white overflow-hidden">
+                <div className="container mx-auto px-6">
+                    <div className="space-y-40">
+                        {productHighlights.map((product, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8 }}
+                                className={`flex flex-col lg:flex-row gap-24 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                            >
+                                <div className="lg:w-1/2 relative">
+                                    <div className="absolute -inset-8 bg-gradient-to-br from-blue-50 to-indigo-50/30 rounded-[4rem] -z-10 blur-2xl" />
+                                    <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-[12px] border-white group">
+                                        <Image
+                                            src={product.image}
+                                            alt={product.title}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-[2000ms]"
+                                        />
+                                        <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-500" />
+                                    </div>
+                                    <div className="absolute -bottom-8 -right-8 p-8 bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl flex items-center gap-6 border border-white/50 relative z-20 group-hover:-translate-y-2 transition-transform duration-500">
+                                        <div className="p-4 bg-blue-50 rounded-2xl text-[#2D499A] shadow-sm group-hover:bg-[#2D499A] group-hover:text-white transition-colors duration-500">
+                                            <Icon name={product.icon} className="w-8 h-8" />
+                                        </div>
+                                        <div>
+                                            <div className="text-xs font-bold text-[#2D499A] uppercase tracking-widest mb-1">R&D Project</div>
+                                            <span className="text-2xl font-serif italic text-gray-900">{product.title}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="lg:w-1/2">
+                                    <h3 className="text-4xl md:text-6xl font-serif italic text-gray-900 mb-8 leading-tight">{product.title}</h3>
+                                    <p className="text-2xl text-gray-600 leading-relaxed font-light">{product.description}</p>
+                                    <div className="mt-12 flex items-center gap-4 text-[#2D499A] font-bold group cursor-pointer">
+                                        <span className="border-b-2 border-transparent group-hover:border-current transition-all">Explore Innovation</span>
+                                        <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
