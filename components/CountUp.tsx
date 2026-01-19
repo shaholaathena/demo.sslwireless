@@ -18,9 +18,10 @@ export default function CountUp({
   prefix = '',
   decimals = 0,
 }: CountUpProps) {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
+  const ref = useRef(null)
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.5,
   })
 
   const count = useMotionValue(0)
@@ -30,10 +31,10 @@ export default function CountUp({
   })
 
   useEffect(() => {
-    if (inView) {
+    if (isInView) {
       count.set(end)
     }
-  }, [inView, end, count])
+  }, [isInView, end, count])
 
   const displayValue = useRef(0)
 
@@ -47,7 +48,7 @@ export default function CountUp({
   return (
     <span ref={ref}>
       {prefix}
-      {inView ? (
+      {isInView ? (
         <CountDisplay value={rounded} decimals={decimals} />
       ) : (
         '0'
@@ -64,7 +65,7 @@ function CountDisplay({
   value: any
   decimals: number
 }) {
-  const [display, setDisplay] = useState(0)
+  const [display, setDisplay] = useState<number | string>(0)
 
   useEffect(() => {
     const unsubscribe = value.on('change', (latest: number) => {

@@ -103,7 +103,7 @@ export default function Careers() {
                             <h2 className="text-4xl font-normal text-gray-900 mb-4">Open Roles</h2>
                             <p className="text-gray-600">Find the perfect role for you.</p>
                         </div>
-                        <a href="#" className="hidden md:block text-blue-600 font-medium hover:underline">View all jobs -></a>
+                        <a href="#" className="hidden md:block text-blue-600 font-medium hover:underline">View all jobs →</a>
                     </div>
 
                     <div className="space-y-4">
@@ -134,7 +134,7 @@ export default function Careers() {
                     </div>
 
                     <div className="mt-12 text-center md:hidden">
-                        <a href="#" className="text-blue-600 font-medium hover:underline">View all jobs -></a>
+                        <a href="#" className="text-blue-600 font-medium hover:underline">View all jobs →</a>
                     </div>
                 </div>
             </section>
